@@ -6,12 +6,31 @@ Code and Tweet
 
 {% block content %}
 
-<h1 class="text-center mt-4">Are you sure that you want to delete the tweet?</h1>
-
-<form method='POST'>
-    {% csrf_token %}
-    <button class="btn btn-danger"> Delete </button>
-    <a class="btn btn-success" href="{% url 'tweet_list' %}">Cancel</a>
-</form>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card shadow-lg border-0" style="max-width: 420px; width: 100%;">
+        <div class="card-body text-center p-4">
+            <!-- Warning Icon -->
+            <div class="mb-3">
+                <span class="fs-1 text-danger">⚠️</span>
+            </div>
+            <!-- Heading -->
+            <h4 class="fw-bold mb-3">
+                Delete Tweet?
+            </h4>
+            <!-- Description -->
+            <p class="text-muted mb-4">
+                This action cannot be undone.  
+                Are you sure you want to permanently delete this tweet?
+            </p>
+    
+            <form method='POST' class="d-inline">
+                {% csrf_token %}
+                <button class="btn btn-danger px-4 me-2"> Delete </button>
+            </form>
+            
+            <a href="{% url 'tweet_list' %}" class="btn btn-outline-secondary px-4">Cancel</a>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

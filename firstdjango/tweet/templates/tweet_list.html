@@ -6,7 +6,13 @@
 
 {% block content %}
 
-<h1 class="text-center mt-4">Welcome to My Django Project</h1>
+<h2 class="text-center mt-4 fw-bold">
+    Welcome!
+    <p> Share your thoughts 💬</p>
+</h2>
+<p class="text-center text-muted mb-4">
+    Create, search and manage your tweets
+</p>
 
 <div class="container mb-4">
     <a class="btn btn-primary" href="{% url 'tweet_create' %}">Create a Tweet</a>
@@ -21,14 +27,17 @@
                 <h5 class="card-title">{{tweet.user.username}}</h5>
                 <p class="card-text">{{tweet.text}}</p>
                 {% if tweet.user == user %}
-                <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary">Edit</a>
-                <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-sm btn-outline-primary me-2">✏️ Edit</a>
+                <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-sm btn-outline-danger">🗑 Delete</a>
                 {% endif %}
             </div>
         </div>
         {% endfor %}
         {% else %}
-            <p class="text-center text-muted mt-4">No tweets found.</p>
+            <div class="text-center text-muted mt-5">
+                <h4>No tweets found 🫤</h4>
+                <p>Try searching something else or create a tweet.</p>
+            </div>
         {% endif %}
 </div>
 
